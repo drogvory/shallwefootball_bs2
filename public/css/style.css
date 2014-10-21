@@ -1,0 +1,942 @@
+/* font */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+/* Global */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+  font-family: nanumgothic, sans-serif;
+  color: #2d2d2d;
+  font-size: 14px; font-size: 1.5rem;
+  line-height: 20px; 
+  background: url(../images/kbg.jpg) repeat 0 0 #f5f5f5;
+  font-weight: 300;
+   /* margin-top: 60px; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: nanumgothic, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+p {
+    margin: 0 10px 10px 0;
+}
+a {
+  color: #F1F1F1;
+  text-decoration: none;
+}
+a:hover {
+  color: #F5F5F5;
+  text-decoration: none;
+}
+
+
+
+
+
+
+/* sidebar */
+#sidebar {
+	background: #151515;
+	width: 50px;
+	height: 100%;  /*height: 120%;   padding: 0;  <-- 제작자는 이렇게 해놧다.*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2
+}
+.btn-navbar {
+	cursor: pointer;
+	filter: alpha(opacity=40);
+	float: left;
+	margin: 20px 5px 10px;
+	opacity: .4;
+	padding: 7px 10px			
+}
+.btn-navbar .icon-bar {
+	background-color: #F5F5F5;
+	border-radius: 1px 1px 1px 1px;
+	box-shadow: none;
+	display: block;
+	height: 2px;
+	width: 18px;	
+}
+
+
+/* global navigation */
+#nav {
+	margin-top: 80px
+}
+
+#nav > ul {
+	list-style: none;
+	padding: 0;
+	margin: 0
+}
+
+#nav > ul > li {
+	color: #F1F1F1;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 26px;
+	filter: alpha(opacity=40);
+	font-size: 16px; font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 100;
+	opacity: .4;
+	padding: 8px 0 8px 15px;
+	text-transform: uppercase;
+	width: 70%;     /*이거 없어두 상관없는디??*/
+}
+#nav ul li.active {
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+#nav ul li.last {
+	padding-right: 0;		/*이게 패딩라이트가 왜 0이 었던거지??*/
+}
+
+#nav ul li span {
+	display: inline-block;
+	font-size: 16px;
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+	padding-left: 10px;
+	width: 0;
+}
+
+
+
+
+/* Expanded Nav Styling */
+
+.expanded #container {
+    left: 100px;
+    transform: translate3d(50px, 0px, 0px) scale3d(1, 1, 1); 
+    /*이거때문에 토글이 늘어나서 옆컨테츠를 다 밀어버림,*/
+}
+
+.expanded #sidebar {
+	width: 150px;
+}
+
+.expanded #nav li {
+	width: 90%;
+}
+.expanded #nav li span {
+	display: inline-block;
+	height: auto;
+	opacity: 1;
+	overflow: visible;
+	width: auto;
+}
+
+
+/*.expanded #nav ul li.active:after {
+    content: ">";
+    display: block;
+    margin-top: -21px;
+    position: absolute;
+    right: -3px;
+    z-index: 2;
+}
+이건대체 뭘깡,*/
+
+
+
+
+
+
+/* General Styling */
+
+#wrap {
+	overflow: hidden;
+	position: relative;
+	width: 100%
+}
+#container {
+	width: 100%;	
+	position: relative;
+	left: 50px
+  /*transform: translate3d(0px, 0px, 0px);
+  transition: transform 500ms ease 0s;
+  backface-visibility: hidden;*/
+}
+/*container에 잇는 left: 50px 이엇는데,,, 0으로 바꾼거거든,,나중에 먼일잇나 함 보자자자자*/
+#modalContainer {
+  width: 100%;  
+  position: relative;
+  left: 0
+  /*transform: translate3d(0px, 0px, 0px);
+  transition: transform 500ms ease 0s;
+  backface-visibility: hidden;*/
+}
+
+.section {
+	background-attachment: scroll;
+	background-position: center top;
+	position: relative;
+	padding: 150px 0 170px;
+  margin-left: -50px; /*원래는 -50px 이엇는데,,,나중에 함보자이*/
+}
+
+.modalSection {
+  background-attachment: scroll;
+  background-position: center top;
+  position: relative;
+  padding: 150px 0 170px;
+  margin-left: 0; /*원래는 -50px 이엇는데,,,나중에 함보자이*/
+}
+
+.section h2 {
+  display: inline-block;
+    font-size: 58px; font-size: 5.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 72px;
+}
+
+.section h4 {
+    font-size: 20px; font-size: 2.0rem;
+    font-weight: 500;
+    line-height: 28px;
+    margin: 0 0 20px;
+    padding-bottom: 5px;
+}
+
+.section h5 {
+    font-size: 15px; font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 24px;
+    margin: 0 0 20px;
+    padding-bottom: 5px;
+}
+.section .title hr {
+  border-color: #151515;
+  border-width: 1px 0 0;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.section .title .alt hr {
+  border-color: #F1F1F1;
+}
+
+.section .desc {
+  margin-top: 20px;
+}
+
+.section .content {
+  margin-top: 75px;
+}
+
+.container-fluid {
+	margin: 0 auto;
+	padding: 0 80px
+}
+
+.control-group .controls input, .control-group .controls textarea {
+  background: url(../images/form-bg.jpg) 0 0 repeat #F1F1F1;
+  border-radius: 0px;
+  min-height: 36px;
+}
+
+.control-group .controls input:focus, .control-group .controls textarea:focus {
+  border-color: rgba(144, 144, 144, 0.9);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(144, 144, 144, 0.9);
+}
+
+/*.alert, .alert-error {
+  border-radius: 0px;
+} 클레스 없다잉*/
+
+.btn-default {
+  background: none #F1F1F1;
+  color: #151515;
+  margin-top: 25px;
+}
+
+.btn-inverse {
+  background: none #151515;
+  color: #F1F1F1;
+  margin-top: 25px;
+  font-family: nanumgothic;
+}
+
+
+
+
+
+.btn-default, .btn-inverse {
+  border: medium none;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "brandon-grotesque",sans-serif;
+  font-size: 14px; font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 20px;
+  padding: 8px 14px;
+  text-align: left;
+  text-transform: uppercase;
+  width: 190px;
+}
+
+.btn-inverse span, .btn-default span {
+  font-weight: 700;
+}
+
+.btn-inverse.alt, .btn-default.alt {
+  text-align: right;
+}
+
+.btn-inverse i, .btn-default i {
+  float: right;
+  line-height: 20px;
+}
+
+.btn-inverse.alt i, .btn-default.alt i {
+  float: left;
+}
+
+.read-more {
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 20px;
+  padding-right: 10px;
+}
+
+.table th, .table td {
+  border-top: 1px solid #151515;
+  line-height: 20px;
+  padding: 10px 2px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+  background-color: rgba(60, 60, 60, 0.4);
+}
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: rgba(75, 75, 75, 0.4);
+}
+
+
+
+
+
+
+/*	section1	*/
+
+#section1 {
+	background-image:url(../images/intro-bg-alt.jpg);
+  background-size: 100% auto;
+	background-repeat: no-repeat;	
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+}
+#section1 .intro {
+	margin: 130px 0;
+}
+
+#section1 .thumb {
+  display: none;
+}
+
+#section1 .intro h1 {
+	font-family: nanumgothic;
+	color: #f1f1f1;
+	font-size: 80px; font-size: 8.5rem;
+	font-weight: 600;
+	letter-spacing: -2px;
+	line-height: 85px;
+	margin-left: -5px;	
+}
+#section1 .intro h3 {
+	color: #f1f1f1;
+	font-size: 26px;
+	font-weight: 100;
+	line-height: 28px;
+	margin: 0px;
+	width: 80%
+}
+#section1 .span6 img {
+  margin-bottom: 10px;
+}
+
+
+
+/* Section2 */
+
+#section2 #slide2 {
+  display: none;
+  margin-top: 37px;
+}
+
+#section2 .content img {
+  max-width: 96%;
+  padding: 1.5%;
+  background-color: #F1F1F1;
+}
+
+#section2 .read-more.alt {
+    margin: -20px 0 20px;
+    padding-right: 0;
+}
+
+
+#section2 .table th  {
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  /* font-size: 16px; font-size: 1.6rem; */
+  font-weight: 700;
+  height: 30px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+#section2 .button, #section4 .button {
+  margin-top: 40px;
+}
+
+#section2 .pull-right {
+  margin-left: 25px;
+  margin-right: 0.8%;
+}
+/*
+#section2 .first {
+  margin-left: 1.5%;
+}
+*/
+
+
+
+/* Section3 */
+#section3 {
+	background-image: url(../images/table_bg.jpg);
+	color: #f1f1f1;
+}
+
+#section3 h2 {
+  margin-left: -5px;
+}
+
+
+#section3 .table th  {
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  /* font-size: 16px; font-size: 1.6rem; */
+  font-weight: 700;
+  height: 30px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+
+
+
+#section3 .content .span4, #section3 .content .span6 {
+  padding-right: 20px;
+}
+
+#section3 .content {
+  min-height: 300px;
+}
+
+#section3 .content .span8 {
+  display: none;
+}
+
+#section3 .content .span8.current {
+  display: block;
+}
+
+#section3 ul.article-tags {
+    border-top: 1px solid #151515;
+    margin: 40px 0 0;
+}
+
+#section3 ul.article-tags li {
+    border-bottom: 1px solid #151515;
+    cursor: pointer;
+    display: block;
+    font-size: 17px; font-size: 1.7rem;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+    padding-left: 45px;
+    position: relative;
+}
+
+#section3 ul.article-tags li:hover, #section3 ul.article-tags li.current {
+    background-color: rgba(21, 21, 21, 0.20);
+}
+
+#section3 ul.article-tags i {
+    left: 15px;
+    font-size: 16px; font-size: 1.6rem;
+    position: absolute;
+    top: 10px;
+}
+
+#section3 h4 {
+  border-bottom: 1px solid #151515;
+    height: 35px;
+    margin-bottom: 18px;
+}
+#section3 .pull-right {
+  margin-left: 25px;
+  margin-right: 0.8%;
+}
+#section3 .modal-header, #section3 .modal-body, #section3 .modal-footer{
+  color: #2d2d2d;
+}
+
+
+
+
+
+#section4  h2 {
+  margin-left: -4px;
+}
+
+#section4 a, #section4 a:hover {
+  color: #151515;
+}
+
+#section4 .content .span4, #section4 .content .span6 {
+  padding-right: 20px;
+}
+
+#section4 .content {
+  min-height: 300px;
+}
+
+#section4 .content .span8 {
+  display: none;
+}
+
+#section4 .content .span8.current {
+  display: block;
+}
+
+#section4 ul.article-tags {
+    border-top: 1px solid #151515;
+    margin: 40px 0 0;
+}
+
+#section4 ul.article-tags li {
+    border-bottom: 1px solid #151515;
+    cursor: pointer;
+    display: block;
+    font-size: 17px; font-size: 1.7rem;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+    padding-left: 45px;
+    position: relative;
+}
+
+#section4 ul.article-tags li:hover, #section4 ul.article-tags li.current {
+    background-color: rgba(21, 21, 21, 0.20);
+}
+
+#section4 ul.article-tags i {
+    left: 15px;
+    font-size: 16px; font-size: 1.6rem;
+    position: absolute;
+    top: 10px;
+}
+
+#section4 h4 {
+  border-bottom: 1px solid #151515;
+    height: 35px;
+    margin-bottom: 18px;
+}
+
+
+
+
+/* Section5 */
+#section5 {
+	background-image: url(../images/contact_bg.jpg);
+	color: #f1f1f1;
+	padding-bottom: 0;
+}
+#section5 h4.intro {
+	border-bottom: 1px solid #F1F1F1;
+    height: 35px;
+    margin-bottom: 18px;
+}
+#section5 .content {
+	position: relative;
+}
+#section5 .content .alt {
+	margin-top: 20px;
+}
+#section5 .content .alt h4 {
+	line-height: 24px;
+	margin: 0;
+	padding-right: 20px;
+}
+
+#section5 .content .alt h4, #section6 .content .alt span {
+	display: inline-block;
+}
+
+#section5 .content .alt h5 {
+	display: inline;
+    line-height: 20px;
+    margin: 0;
+    padding-right: 10px;
+}
+
+#section5 .content .span4 {
+	padding-right: 25px;
+}
+
+#section5 .btn-default {
+    margin-top: 15px;
+}
+
+#section5 #footer {
+	margin: 200px 0 40px;
+}
+
+#section5 #footer p {
+	font-size: 14px; font-size: 1.4rem;
+}
+
+
+
+
+
+
+
+/* Media Queries */
+
+
+
+
+@media screen and (min-width: 1800px) {
+	
+	#section1 {
+		padding: 300px 0 !important;
+	}
+}
+
+@media screen and (max-width: 1320px) {
+	
+	#section1 {
+		background-size: 1320px auto;
+	}
+}
+
+
+
+@media screen and (min-width: 1200px) {
+	
+	#section1 {
+		padding: 170px 0;
+	}
+	
+	#section1 .intro h1 {
+
+      line-height: 110px;
+      letter-spacing: -4px;
+  }
+
+	#section1 .intro h3 {
+	    font-size: 26px; font-size: 2.6rem;
+	    line-height: 34px;
+	    width: 90%;
+	}
+	
+	.section h2 {
+	    font-size: 67px; font-size: 6.7rem;
+	}
+			
+	.container-fluid {
+	    width: 1024px;
+	}
+}
+
+@media screen and (max-width: 1199px) {
+
+	.section{
+		margin-left: -50; /*원래 -50px 이엇는데 나중에 뻑나는지 봐야지*/
+		padding: 135px 0;
+	}
+  .modalSection {
+    margin-left: 0; /*원래 -50px 이엇는데 나중에 뻑나는지 봐야지*/
+    padding: 135px 0;
+  }
+	
+	#section1 {
+		background-size: 1200px auto;
+	}
+	#section1 .intro h1 {
+		font-size: 70px;
+		line-height: 70px;
+	}
+
+	#section1 .intro {
+		margin: 100px 0;
+	}		
+	
+	#section1 .intro h3 {
+		font-size: 20px; font-size: 2.0rem;
+		line-height: 24px;
+	}
+	
+	.section .content {
+	    margin-top: 50px;
+	}
+	
+	.container-fluid {
+	    padding-left: 105px;
+	    padding-right: 105px;
+    }	
+}
+
+
+@media screen and (max-width: 979px) {
+	
+	.section h2 {
+	    font-size: 48px; font-size: 4.8rem;
+	    line-height: 58px;
+	}
+	
+	.section .title hr {
+	    margin-top: 40px;
+	}
+	
+	.section .desc .span8 {
+    	width: 100%;
+	}
+	
+	#section1 .intro h1 {
+		font-size: 60px; font-size: 6.0rem;
+		line-height: 70px;
+	}	
+	
+	#section1 .intro h3 {
+		font-size: 17px; font-size: 1.7rem;
+		line-height: 22px;
+	}
+
+	#section5 .content .span4 {
+		padding-right: 0px;
+	}
+	
+	.container-fluid {
+	    padding-left: 75px;
+	    padding-right: 75px;
+	}			
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+
+  #section1 .intro h1 {
+    font-size: 58px; font-size: 5.8rem;
+  }
+
+  #section1 .intro h3 {
+    width: 85%;
+  }
+  
+  #section2 .content .expand {
+    width: 48.6188%;
+  }
+  
+  #section4 .content .expand {
+    width: 100%;
+  }
+
+  #section4 .content .span8 .row-fluid {
+    margin-left: -2.8%;
+  }
+
+}
+
+
+
+
+@media (max-width: 767px) {
+  
+  body {
+    padding: 0px;
+  }
+    
+  .section {
+    padding: 100px 0;
+  }
+  
+  .section .content {
+      margin-top: 0;
+  }
+  
+  .section .content .pull-right {
+      float:left;
+    }
+  
+  .section h4 {
+    margin-top: 30px;
+  }
+  
+  .section .title hr {
+    margin-left: 0px;
+  }
+    
+  #section1 {
+    background-size: 920px auto;
+  }
+  
+  #section1 .intro {
+    margin: 120px 0;
+  }
+  
+  #section1 .intro h3 {
+    width: 55%;
+  }
+  
+  #section2 .fluHid_img{
+    display: none;
+  } 
+
+
+  #section3 .content img {
+      margin-top: 30px;
+      padding: 1.5%;
+    }
+        
+  #section3 .table th, #section3 .table td {
+      font-size: 13px; font-size: 1.3rem;
+  }
+  
+  #section3 .table {
+    margin-top: 30px;
+  }
+    
+  #section5 .span8 {
+    margin-top: 30px;
+  }
+
+  #section1 .span6 img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 649px) {
+
+  #section1 .intro h1 {
+    font-size: 60px; font-size: 6rem;
+    line-height: 60px;
+  }
+  
+  #section1 .intro h3 {
+    font-size: 17px; font-size: 1.7rem;
+  }
+
+}
+
+@media screen and (min-width: 481px) {
+  
+  #section1 {
+    background-image:url(../images/bg.jpg);
+  }
+  
+}
+
+
+@media screen and (max-width: 480px) {
+   
+  .section{
+    padding: 80px 0;
+  }
+  
+  #section1 {
+      background-size: 1024px auto;
+      padding: 60px 0;
+  }
+  
+  #section1 .intro {
+    margin: 50px 0;
+  }
+
+  #section1 .intro h1 {
+    font-size: 45px; font-size: 4.5rem;
+    line-height: 50px;
+  }
+  
+  #section1 .intro h3 {
+    font-size: 16px; font-size: 1.6rem;
+    line-height: 24px;
+    width: 100%;
+  }
+  
+  #section1 .thumb {
+    background-color: rgba(3, 3, 3, 0.7);
+    display: block;
+    margin-left: 3%;
+    max-width: 80%;
+    padding: 1%;
+  }
+  
+  #section3 .table th, #section3 .table td {
+      font-size: 11px; font-size: 1.1rem;
+  }
+  
+  #section4 h4 {
+      height: auto;
+  }    
+
+}
+
+
+@media screen and (max-width: 354px) {
+   #section1 .intro h1 {
+    font-size: 40px; font-size: 4.0rem;
+    line-height: 50px;
+  }
+  
+  #section1 .intro h3 {
+    font-size: 14px; font-size: 1.4rem;
+    line-height: 24px;
+    width: 100%;
+  }
+
+}
+
+
+
+
+
+/* Modal */
+
+.modal {
+  width: 730px;
+}
+
+.modal-body a {
+  color: #2d2d2d;
+  text-decoration: none;
+}
+
+.modal-body .nav .active {
+  font-weight: 600;
+}
+
+.modal .detailStat {
+  cursor: pointer;
+}

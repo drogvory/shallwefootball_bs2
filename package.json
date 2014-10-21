@@ -1,0 +1,30 @@
+{
+  "name": "shallwefootball-bootstrap2",
+  "version": "0.1.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "grunt"
+  },
+  "author": "Amos Dong-Keon Kim <drogvory@gmail.com> (https://github.com/drogvory, http://www.shallwefootball.com)",
+  "reference": {
+    "url": "http://www.nathanieldeal.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drogvory/shallwefootball_bs2.git"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "debug": "~0.7.4",
+    "each-async": "^0.1.3",
+    "ejs": "~0.8.5",
+    "express": "~4.2.0",
+    "morgan": "~1.0.0",
+    "static-favicon": "~1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-nodemon": "^0.3.0"
+  }
+}

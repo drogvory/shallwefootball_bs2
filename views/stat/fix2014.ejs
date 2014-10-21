@@ -1,0 +1,644 @@
+<div id="fix2014" class="modal hide fade container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">2014시즌</h3>
+	</div>
+
+	<div class="modal-body">
+
+			<ul class="nav nav-tabs" id="nav2014">
+			  <li><a href="#DAY1_2014" data-toggle="tab" data-schedule="3/8">1일차</a></li>
+			  <li><a href="#DAY2_2014" data-toggle="tab" data-schedule="3/29">2일차</a></li>
+			  <li><a href="#DAY3_2014" data-toggle="tab" data-schedule="4/19">3일차</a></li>
+			  <li><a href="#DAY4_2014" data-toggle="tab" data-schedule="5/10">4일차</a></li>
+			  <li><a href="#DAY5_2014" data-toggle="tab" data-schedule="5/31">5일차</a></li>
+			  <li><a href="#DAY6_2014" data-toggle="tab" data-schedule="6/21">6일차</a></li>
+			  <li><a href="#DAY7_2014" data-toggle="tab" data-schedule="7/12">7일차</a></li>
+			  <li><a href="#DAY8_2014" data-toggle="tab" data-schedule="8/2">8일차</a></li>
+			  <li><a href="#DAY9_2014" data-toggle="tab" data-schedule="8/23">9일차</a></li>
+			  <!-- <li class="active"><a href="#DAY9_2014" data-toggle="tab">9일차</a></li> -->
+			  <li><a href="#DAY10_2014" data-toggle="tab" data-schedule="9/8">10일차</a></li>
+			  <li><a href="#DAY11_2014" data-toggle="tab" data-schedule="10/4">Quater-Finals</a></li>
+			  <li><a href="#DAY12_2014" data-toggle="tab" data-schedule="10/25">Semi-Finals</a></li>
+			  <li><a href="#DAY13_2014" data-toggle="tab" data-schedule="11/1">Final</a></li>
+			</ul>
+
+
+
+
+			<div class="tab-content">
+
+					<% var day = 1; %>
+					<% var match = 0;%>
+					<% index.matches.forEach(function (item) { %>
+						<% if(!(match%4)) { %>
+							<div class="tab-pane fade" id="DAY<%= day %>_2014" >
+								<table class="table">
+							      <thead>
+							        <tr>
+							          <th>일정 및 장소</th>
+							          <th>시간</th>
+							          <th>대진 및 결과</th>
+							          <th>기록</th>
+							        </tr>
+							      </thead>
+						<% } %>
+									<tr>
+										<% if(!(match%2)) { %>
+											<td rowspan=2>
+												<%= item.month %>.<%= item.day %> <%= item.stadium %>
+											</td>
+										<% } %>
+											<td>
+												<%= item.hour %>.00~
+											</td>
+
+										<% if(!item.homeScore && !item.awayScore) { %>
+											<td>
+												<%= item.homeClubName %> () : () <%= item.awayClubName %>
+											</td>
+										<% }else { %>
+											<td>
+												<%= item.homeClubName %> (<%= item.homeScore %>) : (<%= item.awayScore %>) <%= item.awayClubName %>
+											</td>
+										<% } %>
+
+										<% if (item.link) { %>
+											<td><a class="detailStat" target="_blank" href="<%= item.link %>">자세히</a></td>
+										<% }else { %>
+											<td><%= item.note ? item.note : item.matchName %></td>
+										<% } %>
+									</tr>
+
+						<% if(match%4 == 3 || match == 48) { %>
+							    </table>
+							</div>
+							<% day++; %>
+						<% } %>
+					<% match++; %>
+					<% }) %>
+
+			</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	</div>
+
+
+	<script>
+		var now = new Date();
+		// console.log('fixDay     : ', fixDay);
+		$('#nav2014 li').each(function (i) {
+			var schedule = $('#nav2014 li').eq(i).children().attr("data-schedule");
+			var month = schedule.split('/')[0];
+			var day = schedule.split('/')[1];
+			var fixDay = new Date(2014, (month-1), day);
+
+			if(fixDay > now) {
+
+				$(this).addClass("active");
+				var matchDay = ($(this)).children().attr("href");
+
+				$(matchDay).addClass("in active");
+
+				return false;	//jquery return을 하려면 false 해줘야함
+			}
+
+		})
+	</script>
+
+</div>
+
+
+<!--
+
+			  <div class="tab-pane fade" id="DAY1_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>3.1 오학</td>
+			        <td>19:00~</td>
+			        <td>승성 (6) : (3) 쇼부</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=675053549222047&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>신여주 (2) : (2) 라온</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=675053549222047&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>3.8 오학</td>
+			        <td>19:00~</td>
+			        <td>무진 (3) : (0) 니케</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>위너 (3) : (0) 호랑이</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY2_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>3.22 오학</td>
+			        <td>19:00~</td>
+			        <td>유로 (0) : (3) 승성</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=690133904380678&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>니케 () : () 신여주</td>
+			        <td>연기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>3.29 오학</td>
+			        <td>19:00~</td>
+			        <td>일심 (3) : (0) 무진</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>쇼부 (2) : (1) 위너</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=690134787713923&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY3_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>4.12 오학</td>
+			        <td>19:00~</td>
+			        <td>호랑이 (1) : (1) 유로</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=706543782739690&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>무진 (0) : (3) 신여주</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=706544812739587&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>4.19 오학</td>
+			        <td>19:00~</td>
+			        <td>라온 (5) : (3) 일심</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=707041862689882&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>승성 (7) : (3) 위너</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=707042806023121&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY4_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>5.3 오학</td>
+			        <td>19:00~</td>
+			        <td>쇼부 (3) : (0) 호랑이</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>신여주 (5) : (4) 일심</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=707043886023013&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>5.10 오학</td>
+			        <td>19:00~</td>
+			        <td>니케 (6) : (4) 라온</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=722717144455687&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>위너 (0) : (3) 유로</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY5_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>5.24 오학</td>
+			        <td>19:00~</td>
+			        <td>호랑이 (1) : (10) 승성</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=722717367788998&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>니케 (3) : (0) 일심</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>5.31 오학</td>
+			        <td>19:00~</td>
+			        <td>라온 (3) : (0) 무진</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>유로 (2) : (4) 쇼부</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=722717647788970&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY6_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>6.14 오학</td>
+			        <td>19:00~</td>
+			        <td>쇼부 (1) : (3) 유로</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=743065159087552&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>무진 (0) : (3) 라온</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>6.21 오학</td>
+			        <td>19:00~</td>
+			        <td>일심 (0) : (3) 니케</td>
+			        <td>부정선수
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>승성 (3) : (0) 호랑이</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY7_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>7.5 오학</td>
+			        <td>19:00~</td>
+			        <td>유로 (3) : (0) 위너</td>
+			        <td>부정선수
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>라온 (0) : (2) 니케</td>
+			        <td>
+			        	<a href="https://www.facebook.com/photo.php?fbid=743065872420814&set=a.264588310268575.64292.264587610268645&type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>7.12 오학</td>
+			        <td>19:00~</td>
+			        <td>일심 (3) : (0) 신여주</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>호랑이 (0) : (3) 쇼부</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY8_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>7.26 오학</td>
+			        <td>19:00~</td>
+			        <td>위너 (0) : (3) 승성</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>일심 (4) : (4) 라온</td>
+			        <td>
+			        	<a href="https://www.facebook.com/shallwefootball/photos/a.264588310268575.64292.264587610268645/754491274611607/?type=1&theater" class="detailStat" target="_blank">자세히</a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>8.2 오학</td>
+			        <td>19:00~</td>
+			        <td>신여주 (3) : (0) 무진</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>유로 (3) : (0) 호랑이</td>
+			        <td>기권
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade in active" id="DAY9_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>8.16 오학</td>
+			        <td>19:00~</td>
+			        <td>위너 () : () 쇼부</td>
+			        <td>제 33경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>무진 () : () 일심</td>
+			        <td>제 34경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>8.23 오학</td>
+			        <td>19:00~</td>
+			        <td>신여주 () : () 니케</td>
+			        <td>제 35경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>승성 () : () 유로</td>
+			        <td>제 36경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="DAY10_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>9.6 오학</td>
+			        <td>19:00~</td>
+			        <td>호랑이 () : () 위너</td>
+			        <td>제 37경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>니케 () : () 무진</td>
+			        <td>제 38경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>9.8 오학</td>
+			        <td>19:00~</td>
+			        <td>라온 () : () 신여주</td>
+			        <td>제 39경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>쇼부 () : () 승성</td>
+			        <td>제 40경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+
+			  <div class="tab-pane fade" id="QF_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>9.27 오학</td>
+			        <td>19:00~</td>
+			        <td>A조 2위 () : () B조 3위</td>
+			        <td>제 41경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>B조 2위 () : () A조 3위</td>
+			        <td>제 42경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2>10.4 오학</td>
+			        <td>19:00~</td>
+			        <td>A조 3위 () : () B조 2위</td>
+			        <td>제 43경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+					<td>B조 3위 () : () A조 2위</td>
+			        <td>제 44경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+			  <div class="tab-pane fade" id="SF_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2> 오학</td>
+			        <td>19:00~</td>
+			        <td>A조 1위 () : () A-QF 승자</td>
+			        <td>제 45경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>B조 1위 () : () B-QF 승자</td>
+			        <td>제 46경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td rowspan=2> 오학</td>
+			        <td>19:00~</td>
+			        <td>B-QF 승자 () : () B조 1위</td>
+			        <td>제 47경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>21:00~</td>
+			        <td>A-QF 승자 () : () A조 1위</td>
+			        <td>제 48경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div>
+
+			  <div class="tab-pane fade" id="Final_2014">
+				<table class="table">
+			      <thead>
+			        <tr>
+			          <th>일정 및 장소</th>
+			          <th>시간</th>
+			          <th>대진 및 결과</th>
+			          <th>기록</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td rowspan=2>11.1 오학</td>
+			        <td>20:00~</td>
+			        <td>준결승 승자A () : () 준결승 승자B</td>
+			        <td>제 49경기
+			        	<a href="#" class="detailStat" target="_blank"></a>
+			        </td>
+			      </tr>
+			    </table>
+			  </div> -->
+
